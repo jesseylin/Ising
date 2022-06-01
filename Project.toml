@@ -3,6 +3,10 @@ uuid = "a39a9aa3-3f67-4bad-af50-0f11b544bb87"
 authors = ["Jesse Y Lin <jesseyounglin@gmail.com> and contributors"]
 version = "0.1.0"
 
+[deps]
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
 [compat]
 julia = "1.7"
 
