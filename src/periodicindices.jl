@@ -3,7 +3,7 @@ function wrap(index::CartesianIndex, linearsize)
 	for j in eachindex(indexcopy)
         indexcopy[j] = mod(indexcopy[j], linearsize) == 0 ? linearsize : mod(indexcopy[j], linearsize) 
 	end
-	return CartesianIndex(Tuple(indexcopy))
+	return CartesianIndex(Tuple(indexcopy))::typeof(index)
 end
 
 function Base.:+(x::CartesianIndex, y::CartesianIndex)
