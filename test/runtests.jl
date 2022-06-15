@@ -30,8 +30,8 @@ let
 
 		index = CartesianIndex(rand(linearsize:3*linearsize), -rand(linearsize:3*linearsize))
 		index = wrap(index, linearsize)
-		@test 1 < index[1] <= linearsize
-		@test 1 < index[2] <= linearsize
+		@test 1 <= index[1] <= linearsize
+		@test 1 <= index[2] <= linearsize
 		
 	end
 
