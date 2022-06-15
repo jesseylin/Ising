@@ -12,7 +12,7 @@ include("nearestneighbors.jl")
 function update!(lattice::Lattice, J)
     ϵ = rand()
     site_indices = CartesianIndices(lattice)
-    rand_site = site_indices[rand(eachindex(lattice))]
+    rand_site = rand(site_indices)
     dE = siteenergy(lattice, rand_site, J)
 
     if (dE > 0) || (exp(dE) > ϵ)
