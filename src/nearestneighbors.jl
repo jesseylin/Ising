@@ -23,3 +23,14 @@ function siteenergy(x::Lattice, site, J)
 	end
 	return E
 end
+
+function energy(x::Lattice, J)
+	sites = CartesianIndices(x)
+	E = 0.
+
+	for s in sites
+		E += siteenergy(x, s, J)
+	end
+	E /= 2 # divide for overcounting
+	return E
+end

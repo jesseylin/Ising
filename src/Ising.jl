@@ -2,7 +2,7 @@ module Ising
 
 export Lattice, iterationstep!
 export wrap
-export getneighbors, siteenergy
+export getneighbors, siteenergy, energy
 export update!, simulate!
 
 include("lattice.jl")

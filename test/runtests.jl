@@ -53,10 +53,15 @@ let
 	a = Lattice(linearsize, 1, [1 1 1; 1 1 1; 1 1 1])
 	J = -1 # ferromagnetic
 	@testset "siteenergy sanity check" begin
-		
 		@test siteenergy(a, CartesianIndex(2,2), J) == -4
 		a.arr = a.arr .* -1
 		@test siteenergy(a, CartesianIndex(2,2), J) == -4
+	end
+
+	@testset "energy sanity check" begin
+		@test energy(a, J) == -18
+		a.arr = a.arr .* -1
+		@test energy(a, J) == -18
 	end
 end
 
