@@ -4,9 +4,12 @@ using Test, Random
 @testset "Lattice sanity checks" begin
 	a = Lattice(10)
 	b = deepcopy(a)
-	@test typeof(a) <: Lattice
-	@test a[rand(eachindex(a))] in [1, -1]
-	@test a.linearsize == size(a, 1)
+	c = Lattice([1 1; 1 1])
+	for x in (a,b,c)
+		@test typeof(x) <: Lattice
+		@test x[rand(eachindex(x))] in [1, -1]
+		@test x.linearsize == size(x, 1)
+	end
 	
 	@test b == a
 	@test iterationstep!(a).iterations == 2
@@ -14,6 +17,8 @@ using Test, Random
 	
 	b[1] *= -1
 	@test a != b
+
+	@test_throws ArgumentError Lattice([1 1; 1 1; 1 1])
 end
 
 # tests of periodicindices.jl
