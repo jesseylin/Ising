@@ -60,7 +60,6 @@ let
 	end
 end
 
-# ╔═╡ ddb677ee-2c2d-4e10-82ac-54586fd88f38
 let
 	@testset "getneighbors sanity check" begin
 		linearsize = 3
@@ -76,5 +75,23 @@ let
 		
 		site = CartesianIndex(1,linearsize+1)
 		@test_throws ArgumentError getneighbors(site, linearsize)
+	end
+end
+
+
+# test of Monte Carlo updating
+let 
+	@testset "update! sanity check" begin
+		J = -1
+		linearsize = 10
+		lattice = Lattice(linearsize)
+		orig_lattice = deepcopy(lattice)
+		update!(lattice, J)
+		@test lattice.iterations != orig_lattice.iterations
+
+		lattice = Lattice(linearsize)
+		orig_lattice = deepcopy(lattice)
+		output_data = simulate!(lattice, J, 2)
+		@test output_data[:,:,1] == orig_lattice
 	end
 end
